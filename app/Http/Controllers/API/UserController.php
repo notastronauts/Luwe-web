@@ -28,13 +28,29 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Register API
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function register(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        $user = User::create($input);
+        $success['token'] = $user->createToken('FingerPrnt')->accessToken;
+        $success['name'] = $user->name;
+        return response()->json(['success' => $success, $this->succesStatus]);
+
     }
 
     /**
