@@ -3,12 +3,15 @@
 namespace Tests\Feature;
 
 use App\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
 class RolesAccessTest extends TestCase
 {
+    use RefreshDatabase, DatabaseMigrations;
     /** @test */
     public function user_must_login_to_access_to_admin_dashboard()
     {
@@ -20,6 +23,7 @@ class RolesAccessTest extends TestCase
     public function admin_can_access_to_admin_dashboard()
     {
         // Having User
+        Role::create(['name' => 'admin']);
         $adminUser = factory(User::class)->create();
         $adminUser->assignRole('admin');
         $this->actingAs($adminUser);
@@ -34,6 +38,7 @@ class RolesAccessTest extends TestCase
     /** @test */
     public function user_cannot_access_to_admin_dashboard()
     {
+        Role::create(['name' => 'user']);
         // Having
         $user = factory(User::class)->create();
 
@@ -51,6 +56,7 @@ class RolesAccessTest extends TestCase
     /** @test */
     public function admin_can_access_to_home()
     {
+        Role::create(['name' => 'admin']);
         // Having
         $adminUser = factory(User::class)->create();
 
@@ -68,6 +74,7 @@ class RolesAccessTest extends TestCase
     /** @test */
     public function user_can_access_to_home()
     {
+        Role::create(['name' => 'user']);
         // Having
         $user = factory(User::class)->create();
 

@@ -22,18 +22,19 @@ class RolesAndPermissionsSeeder extends Seeder
             'name' => 'user'
         ]);
 
-        // $user = factory(User::class)->create();
-        // $user->assignRole('user');
+        $user = factory(User::class)->create();
+        $user->assignRole('user');
 
         Role::create([
             'name' => 'admin'
         ]);
 
-        // $admin = factory(User::class)->create([
-        //     'name' => 'Nurul Arifin',
-        //     'email' => 'arifinnurul957@gmail.com'
-        // ]);
+        $admin = factory(User::class)->create([
+            'name' => 'Nurul Arifin',
+            'email' => 'arifinnurul957@gmail.com',
+            'password' => 'password'
+        ]);
 
-        //$admin->assignRole('admin');
+        $admin->assignRole('admin');
     }
 }
