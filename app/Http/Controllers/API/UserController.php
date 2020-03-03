@@ -47,21 +47,26 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
+        $user->assignRole('user');
         $success['token'] = $user->createToken('FingerPrnt')->accessToken;
         $success['name'] = $user->name;
         return response()->json(['success' => $success, $this->succesStatus]);
-
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Logout API
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function logout(Request $request)
     {
-        //
+        $request->user()->token()->revoke();
+
+        return response()->json([
+            'message' => 'Successfully logout',
+            200
+        ]);
     }
 
     /**
