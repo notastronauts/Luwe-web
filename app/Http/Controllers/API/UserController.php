@@ -75,9 +75,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getdetail(Request $request)
     {
-        //
+        $detail = $request->user();
+
+        return response()->json([
+            'success' => $detail, 200
+        ]);
     }
 
     /**
