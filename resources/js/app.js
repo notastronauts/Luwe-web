@@ -30,18 +30,3 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
-
-// Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyCWXFhoma76GlKNCWngDxerz_ClIIsQCWA",
-    authDomain: "luwe-776cb.firebaseapp.com",
-    databaseURL: "https://luwe-776cb.firebaseio.com",
-    projectId: "luwe-776cb",
-    storageBucket: "luwe-776cb.appspot.com",
-    messagingSenderId: "447620098795",
-    appId: "1:447620098795:web:ccac505a2a7074f3fcacae",
-    measurementId: "G-2TF7E1KXXL"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
