@@ -13,6 +13,8 @@
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
+Route::post('send-verification-code', 'API\PhoneNumberVerification@sendCode');
+Route::post('verify-phone-number', 'API\PhoneNumberVerification@verify');
 
 Route::group(
     [
