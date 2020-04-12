@@ -14,33 +14,15 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Vendors -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('restaurant/admin/css/vendors.css') }}">
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCWXFhoma76GlKNCWngDxerz_ClIIsQCWA",
-            authDomain: "luwe-776cb.firebaseapp.com",
-            databaseURL: "https://luwe-776cb.firebaseio.com",
-            projectId: "luwe-776cb",
-            storageBucket: "luwe-776cb.appspot.com",
-            messagingSenderId: "447620098795",
-            appId: "1:447620098795:web:ccac505a2a7074f3fcacae",
-            measurementId: "G-2TF7E1KXXL"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
+    <!-- Themes -->
+    <link rel="stylesheet" href="{{ asset('restaurant/admin/css/app-lite.css
+    ') }}">
 </head>
 
 <body>

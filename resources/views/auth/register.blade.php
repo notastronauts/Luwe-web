@@ -2,6 +2,21 @@
 
 @section('content')
 <div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <h4 class="h4">Join Luwe : Restaurant and Cafe Reservation</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+    </div>
+</div>
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +88,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

@@ -1,7 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-wrapper-before"></div>
+        <div class="content-body">
+            <!-- Card section start -->
+            <div class="container">
+                <section id="text-alignments">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="h3 text-center">Login</h3>
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <h5 class="mt-2" for="Email">Email</h5>
+                                            <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            @error('email')
+                                            <span class="danger text-italic text-small">
+                                                <p> Is invalid </p>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <h5 class="mt-2" for="Email">Password</h5>
+                                            <input name="password" type="password" class="form-control @error('password') is-invalid  @enderror" placeholder="Password" required autocomplete="current-password">
+                                            @error('email')
+                                            <span class="danger text-italic text-small">
+                                                <p> Is invalid </p>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        <p class="text-right">
+                                            <a href="#">Forgot Password?</a>
+                                        </p>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-block btn-primary" value="Login">
+                                        </div>
+                                    </form>
+                                    <p class="text-center">Or <br> don't have an account?</p>
+                                    <p class="text-center">
+                                        <a href="#">Register</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Card section end -->
+        </div>
+    </div>
+</div>
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +122,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection

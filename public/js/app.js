@@ -49654,15 +49654,195 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/scss/app-lite.scss":
+/*!**************************************!*\
+  !*** ./resources/scss/app-lite.scss ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/bootstrap-extended.scss":
+/*!************************************************!*\
+  !*** ./resources/scss/bootstrap-extended.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/colors.scss":
+/*!************************************!*\
+  !*** ./resources/scss/colors.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/components-lite.scss":
+/*!*********************************************!*\
+  !*** ./resources/scss/components-lite.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/colors/palette-gradient.scss":
+/*!**********************************************************!*\
+  !*** ./resources/scss/core/colors/palette-gradient.scss ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/colors/palette-switch.scss":
+/*!********************************************************!*\
+  !*** ./resources/scss/core/colors/palette-switch.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/colors/palette-tooltip.scss":
+/*!*********************************************************!*\
+  !*** ./resources/scss/core/colors/palette-tooltip.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/colors/palette-variables.scss":
+/*!***********************************************************!*\
+  !*** ./resources/scss/core/colors/palette-variables.scss ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/menu/menu-types/vertical-menu.scss":
+/*!****************************************************************!*\
+  !*** ./resources/scss/core/menu/menu-types/vertical-menu.scss ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/menu/menu-types/vertical-overlay-menu.scss":
+/*!************************************************************************!*\
+  !*** ./resources/scss/core/menu/menu-types/vertical-overlay-menu.scss ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/mixins/callout.scss":
+/*!*************************************************!*\
+  !*** ./resources/scss/core/mixins/callout.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/mixins/hex2rgb.scss":
+/*!*************************************************!*\
+  !*** ./resources/scss/core/mixins/hex2rgb.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/mixins/main-menu-mixin.scss":
+/*!*********************************************************!*\
+  !*** ./resources/scss/core/mixins/main-menu-mixin.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/core/mixins/transitions.scss":
+/*!*****************************************************!*\
+  !*** ./resources/scss/core/mixins/transitions.scss ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/scss/vendors.scss":
+/*!*************************************!*\
+  !*** ./resources/scss/vendors.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/scss/bootstrap-extended.scss ./resources/scss/colors.scss ./resources/scss/components-lite.scss ./resources/scss/app-lite.scss ./resources/scss/vendors.scss ./resources/scss/core/colors/palette-variables.scss ./resources/scss/core/colors/palette-gradient.scss ./resources/scss/core/colors/palette-switch.scss ./resources/scss/core/colors/palette-tooltip.scss ./resources/scss/core/menu/menu-types/vertical-menu.scss ./resources/scss/core/menu/menu-types/vertical-overlay-menu.scss ./resources/scss/core/mixins/callout.scss ./resources/scss/core/mixins/hex2rgb.scss ./resources/scss/core/mixins/main-menu-mixin.scss ./resources/scss/core/mixins/transitions.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/bootstrap-extended.scss */"./resources/scss/bootstrap-extended.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/colors.scss */"./resources/scss/colors.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/components-lite.scss */"./resources/scss/components-lite.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/app-lite.scss */"./resources/scss/app-lite.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/vendors.scss */"./resources/scss/vendors.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/colors/palette-variables.scss */"./resources/scss/core/colors/palette-variables.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/colors/palette-gradient.scss */"./resources/scss/core/colors/palette-gradient.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/colors/palette-switch.scss */"./resources/scss/core/colors/palette-switch.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/colors/palette-tooltip.scss */"./resources/scss/core/colors/palette-tooltip.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/menu/menu-types/vertical-menu.scss */"./resources/scss/core/menu/menu-types/vertical-menu.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/menu/menu-types/vertical-overlay-menu.scss */"./resources/scss/core/menu/menu-types/vertical-overlay-menu.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/mixins/callout.scss */"./resources/scss/core/mixins/callout.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/mixins/hex2rgb.scss */"./resources/scss/core/mixins/hex2rgb.scss");
+__webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/mixins/main-menu-mixin.scss */"./resources/scss/core/mixins/main-menu-mixin.scss");
+module.exports = __webpack_require__(/*! /home/nurularifin/Nurul Arifin/FingerPrnt-web/resources/scss/core/mixins/transitions.scss */"./resources/scss/core/mixins/transitions.scss");
 
 
 /***/ })
