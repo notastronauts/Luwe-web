@@ -15,7 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
    .js(['resources/js/core/app-lite.js',
          'resources/js/core/app-menu-lite.js'
       ], 'public/restaurant/admin/js')
-   .copy('./node_modules/bs-stepper', 'public/restaurant/admin/vendors')
+   .copy('./node_modules/bs-stepper', 'public/restaurant/admin/vendors/bs-stepper')
    .copy('resources/vendors/', 'public/restaurant/admin/vendors')
    .js('resources/js/core/libraries/bootstrap.min.js', 'public/restaurant/admin/js/core/libraries')
    .js('resources/js/core/libraries/jquery.min.js', 'public/restaurant/admin/js/core/libraries')

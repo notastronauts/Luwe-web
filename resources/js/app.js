@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import Stepper from 'bs-stepper';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -30,3 +32,58 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+var stepperForm;
+
+document.addEventListener('DOMContentLoaded', function () {
+    var stepperFormEl = document.querySelector('#stepperForm');
+    stepperForm = new Stepper(stepperFormEl, {
+        animation: true
+    })
+
+    var btnNextList = [].slice.call(document.querySelectorAll('.btn-next-form'))
+    var btnPrev = [].slice.call(document.querySelectorAll('.btn-previous-form'))
+    var stepperPanList = [].slice.call(document.querySelectorAll('.bs-stepper-pane'))
+    var first_name = document.getElementById('first_name')
+    var last_name = document.getElementById('last_name')
+    var email = document.getElementById('email')
+    var phone_number = document.getElementById('phone_number')
+    var password = document.getElementById('password')
+    var password_confirmation = document.getElementById('password_confirmation')
+    
+    var form = stepperFormEl.querySelector('.bs-stepper-content form')
+
+    btnNextList.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            stepperForm.next()
+        })
+    })
+
+    btnPrev.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            stepperForm.previous()
+        })
+    })
+
+    stepperFormEl.addEventListener('show.bs-stepper', function (event) {
+        form.classList.remove('was-validated')
+        var nextStep = event.detail.indexStep
+        var currentStep = nextStep
+
+        if (currentStep > 0) {
+            currentStep--
+        }
+
+        var stepperPan = stepperPanList[currentStep]
+
+        if ((stepperPan.getAttribute('id') === 'test-form-1' && !first_name.value.length)
+            || (stepperPan.getAttribute('id') === 'test-form-1' && !last_name.value.length)
+            || (stepperPan.getAttribute('id') === 'test-form-1' && !email.value.length)
+            || (stepperPan.getAttribute('id') === 'test-form-1' && !phone_number.value.length)
+            || (stepperPan.getAttribute('id') === 'test-form-1' && !password.value.length)
+            || (stepperPan.getAttribute('id') === 'test-form-1' && !password_confirmation.value.length)){
+            event.preventDefault()
+            form.classList.add('was-validated')
+        }
+    })
+})

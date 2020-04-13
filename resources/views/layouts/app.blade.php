@@ -11,18 +11,18 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
 
     <!-- Vendors -->
     <link rel="stylesheet" type="text/css" href="{{ asset('restaurant/admin/css/vendors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('restaurant/admin/vendors/bs-stepper/dist/css/bs-stepper.min.css') }}">
 
     <!-- Themes -->
-    <link rel="stylesheet" href="{{ asset('restaurant/admin/css/app-lite.css
-    ') }}">
+    <link rel="stylesheet" href="{{ asset('restaurant/admin/css/app-lite.css') }}">
 </head>
 
 <body>
@@ -81,6 +81,9 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('restaurant/admin/vendors/bs-stepper/dist/js/bs-stepper.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 
 </html>
