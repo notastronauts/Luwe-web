@@ -29,7 +29,7 @@
                                     <div class="row">
                                         <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
                                         <div class="col-md-8">
-                                            <input name="first_name" id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="First Name" required>
+                                            <input name="first_name" id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" placeholder="First Name" required value="{{ old('first_name') }}">
                                             @error('first_name')
                                             <span class="invalid-feedback text-left" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
                                     <div class="row">
                                         <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
                                         <div class="col-md-8">
-                                            <input name="last_name" id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last Name" required>
+                                            <input name="last_name" id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" placeholder="Last Name" required value="{{ old('last_name') }}">
                                             @error('last_name')
                                             <span class="invalid-feedback text-left" role="alert">
                                                 <strong>{{ $message }}</strong>

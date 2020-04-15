@@ -33,9 +33,22 @@
                                             </span>
                                             @enderror
                                         </div>
-                                        <p class="text-right">
-                                            <a href="#">Forgot Password?</a>
-                                        </p>
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                                    <label class="form-check-label" for="remember">
+                                                        {{ __('Remember Me') }}
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="text-right">
+                                                    <a href="#">Forgot Password?</a>
+                                                </p>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-block btn-primary" value="Login">
                                         </div>
