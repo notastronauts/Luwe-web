@@ -93,7 +93,7 @@
                                     <span class="avatar avatar-online">
                                         <img src="{{ asset('restaurant/admin/images/portrait/small/avatar-s-18.jpg') }}" alt="avatar">
                                         <span class="user-name text-bold-700 ml-1">
-                                            {{ Auth::user()->name }}
+                                            {{ Auth::user()->first_name }}
                                         </span>
                                     </span>
                                 </a>

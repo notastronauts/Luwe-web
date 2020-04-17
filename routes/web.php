@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('admin/profile', 'UserProfile@index')->name('profile');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/dashboard', function () {
