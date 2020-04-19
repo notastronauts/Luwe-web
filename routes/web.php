@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('admin/profile', 'UserProfile@index')->name('profile');
+    Route::resource('profile', 'UserProfile');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserProfile extends Controller
@@ -68,7 +69,14 @@ class UserProfile extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'address' => $request->address
+        ]);
+
+        return redirect('profile');
     }
 
     /**

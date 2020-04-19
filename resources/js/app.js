@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var phone_number = document.getElementById('phone_number')
     var password = document.getElementById('password')
     var password_confirmation = document.getElementById('password_confirmation')
-    
+
     var form = stepperFormEl.querySelector('.bs-stepper-content form')
 
     btnNextList.forEach(function (btn) {
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             || (stepperPan.getAttribute('id') === 'test-form-1' && !email.value.length)
             || (stepperPan.getAttribute('id') === 'test-form-1' && !phone_number.value.length)
             || (stepperPan.getAttribute('id') === 'test-form-1' && !password.value.length)
-            || (stepperPan.getAttribute('id') === 'test-form-1' && !password_confirmation.value.length)){
+            || (stepperPan.getAttribute('id') === 'test-form-1' && !password_confirmation.value.length)) {
             event.preventDefault()
             form.classList.add('was-validated')
         }

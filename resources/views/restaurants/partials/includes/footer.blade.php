@@ -19,6 +19,7 @@
 <!-- BEGIN CHAMELEON  JS-->
 <script src="{{ asset('restaurant/admin/js/app-lite.js') }}" type="text/javascript"></script>
 <!-- END CHAMELEON  JS-->
+@yield('script')
 </body>
 
 </html>

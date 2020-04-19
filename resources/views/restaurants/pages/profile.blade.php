@@ -18,13 +18,36 @@
                 <div class="card">
                     <img class="rounded-circle img-fluid p-2" src="{{ asset('storage/avatar.png') }}" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="font-weight-bold text-center">{{ Auth::user()->first_name .' '. Auth::user()->last_name }}</h4>
-                        <div class="text-center">
-                            <span class="la la-map-marker"></span>
-                            <small>Unset</small>
+                        <div id="UserDetail">
+                            <h4 class="font-weight-bold text-center">{{ Auth::user()->first_name .' '. Auth::user()->last_name }}</h4>
+                            <div class="text-center">
+                                <span class="la la-map-marker"></span>
+                                @if(Auth::user()->address != null)
+                                <p class="font-weight-small">{{ Auth::user()->address }}</p>
+                                @else
+                                <small>Unset</small>
+                                @endif
+                            </div>
                         </div>
+                        <form method="POST" id="FormUpdateProfile" class="hidden" action="{{ route('profile.update', Auth::user()->id) }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="FirstName">{{ __('First Name') }}</label>
+                                <input name="first_name" id="FirstName" class="form-control" type="text" value="{{ Auth::user()->first_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="LastName">{{ __('Last Name') }}</label>
+                                <input name="last_name" type="text" class="form-control" id="LastName" value="{{ Auth::user()->last_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="Address">{{ __('Address') }}</label>
+                                <textarea name="address" type="text" class="form-control" id="Address">{{ Auth::user()->address }}</textarea>
+                            </div>
+                        </form>
                     </div>
-                    <button type="button" class="btn btn-primary btn-min-width mx-1 mb-1">Edit Profile</button>
+                    <button id="open_edit_form" type="button" class="btn btn-secondary btn-min-width mx-1 mb-1 text-white">Edit Profile</button>
+                    <button id="save_changes" type="submit" class="btn btn-primary btn-min-width mx-1 mb-1 hidden">Save Changes</button>
                 </div>
             </div>
         </div>
@@ -32,44 +55,44 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-body">
-                    <div class="form-group row">
-                        <div class="col-md-3">
-                            <label for="phone_number">{{ __('Phone Number') }}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" id="phone_number" value="{{ Auth::user()->phone_number }}" class="form-control" readonly>
-                            @if(Auth::user()->is_phone_number_verified == 0)
-                                <strong class="font-italic mt-2 text-danger">Your phone number is not verified</strong><br>
-                                <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
-                                <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Number</button>
-                            @else
-                                <strong class="font-italic mt-2 text-success">Verified</strong><br>
-                                <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Number</button>
-                            @endif
-                        </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="phone_number">{{ __('Phone Number') }}</label>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-md-3">
-                            <label for="email">{{ __('Email Address') }}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" id="email" value="{{ Auth::user()->email }}" class="form-control" readonly>
-                            @if(Auth::user()->email_verified_at == null)
-                                <strong class="font-italic mt-2 text-danger">Your email address is not verified</strong><br>
-                                <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
-                                <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
-                            @else
-                                <strong class="font-italic mt-2 text-success">Verified</strong><br>
-                                <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
-                            @endif
-                        </div>
+                    <div class="col-md-6">
+                        <input type="text" id="phone_number" value="{{ Auth::user()->phone_number }}" class="form-control" readonly>
+                        @if(Auth::user()->is_phone_number_verified == 0)
+                        <strong class="font-italic mt-2 text-danger">Your phone number is not verified</strong><br>
+                        <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
+                        <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Number</button>
+                        @else
+                        <strong class="font-italic mt-2 text-success">Verified</strong><br>
+                        <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Number</button>
+                        @endif
                     </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <label for="email">{{ __('Email Address') }}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="email" value="{{ Auth::user()->email }}" class="form-control" readonly>
+                        @if(Auth::user()->email_verified_at == null)
+                        <strong class="font-italic mt-2 text-danger">Your email address is not verified</strong><br>
+                        <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
+                        <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
+                        @else
+                        <strong class="font-italic mt-2 text-success">Verified</strong><br>
+                        <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Update Password</h4>
-                <form action="#">
+                <form method="POST" action="#">
                     <div class="form-group row">
                         <div class="col-md-4">
                             <label for="current_password">{{ __('Current Password') }}</label>
@@ -100,4 +123,26 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var UserDetail = document.querySelector('#UserDetail');
+        var FormUpdateProfile = document.querySelector('#FormUpdateProfile');
+        var btnEditProfile = document.querySelector('#open_edit_form');
+        var btnSaveProfile = document.querySelector('#save_changes');
+        if (!btnEditProfile.hasAttribute('disabled')) {
+            btnEditProfile.addEventListener('click', function() {
+                UserDetail.classList.add('hidden');
+                FormUpdateProfile.classList.remove('hidden');
+                btnEditProfile.classList.add('disabled');
+                btnSaveProfile.classList.remove('hidden');
+            })
+        }
+
+        btnSaveProfile.addEventListener('click', function() {
+            FormUpdateProfile.submit();
+        })
+    });
+</script>
 @endsection
