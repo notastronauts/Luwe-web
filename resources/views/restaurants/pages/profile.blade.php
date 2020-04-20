@@ -29,7 +29,7 @@
                                 @endif
                             </div>
                         </div>
-                        <form method="POST" id="FormUpdateProfile" class="hidden" action="{{ route('profile.update', Auth::user()->id) }}">
+                        <form method="POST" id="FormUpdateProfile" class="hidden" action="{{ route('updateProfile', Auth::user()->id) }}">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -46,6 +46,7 @@
                             </div>
                         </form>
                     </div>
+
                     <button id="open_edit_form" type="button" class="btn btn-secondary btn-min-width mx-1 mb-1 text-white">Edit Profile</button>
                     <button id="save_changes" type="submit" class="btn btn-primary btn-min-width mx-1 mb-1 hidden">Save Changes</button>
                 </div>
@@ -92,13 +93,20 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Update Password</h4>
-                <form method="POST" action="#">
+                <form id="UpdatePassword" method="POST" action="{{ route('updatePassword', Auth::user()->id) }}">
+                    @csrf
+                    @method('PUT')
                     <div class="form-group row">
                         <div class="col-md-4">
                             <label for="current_password">{{ __('Current Password') }}</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="current_password" id="current_password" type="password" class="form-control">
+                            <input name="current_password" id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror">
+                            @error('current_password')
+                            <span class="invalid-feedback text-left" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group row">
@@ -106,7 +114,12 @@
                             <label for="new_password">{{ __('New Password') }}</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="new_password" id="new_password" type="password" class="form-control">
+                            <input name="new_password" id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror">
+                            @error('new_password')
+                            <span class="invalid-feedback text-left" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group row">
@@ -114,10 +127,15 @@
                             <label for="repeat_new_password">{{ __('Repeat New Password') }}</label>
                         </div>
                         <div class="col-md-6">
-                            <input name="repeat_new_password" id="repeat_current_password" type="password" class="form-control">
+                            <input name="repeat_new_password" id="repeat_current_password" type="password" class="form-control @error('repeat_new_password') is-invalid @enderror">
+                            @error('repeat_new_password')
+                            <span class="invalid-feedback text-left" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-min-width my-1" type="submit">Update</button>
+                    <button id="UpdatePasswordButton" class="btn btn-primary btn-min-width my-1" type="submit">Update</button>
                 </form>
             </div>
         </div>
@@ -142,6 +160,10 @@
 
         btnSaveProfile.addEventListener('click', function() {
             FormUpdateProfile.submit();
+        })
+
+        document.querySelector('#UpdatePasswordButton').addEventListener('click', function() {
+            document.querySelector('#UpdatePassword').submit();
         })
     });
 </script>
