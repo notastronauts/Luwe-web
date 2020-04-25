@@ -63,31 +63,37 @@
                     <div class="col-md-6">
                         <input type="text" id="phone_number" value="{{ Auth::user()->phone_number }}" class="form-control" readonly>
                         @if(Auth::user()->is_phone_number_verified == 0)
-                        <strong class="font-italic mt-2 text-danger">Your phone number is not verified</strong><br>
-                        <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
+                        <small class="font-italic mt-2 text-danger">Your phone number is not verified</small><br>
                         <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Number</button>
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-1 mb-1">Verify Phone Number</a>
                         @else
                         <strong class="font-italic mt-2 text-success">Verified</strong><br>
                         <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Number</button>
                         @endif
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-3">
-                        <label for="email">{{ __('Email Address') }}</label>
+                <form method="POST" action="#">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label for="email">{{ __('Email Address') }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="email" value="{{ Auth::user()->email }}" class="form-control" readonly>
+                            @if(Auth::user()->email_verified_at == null)
+                            <strong class="font-italic mt-2 text-danger">Your email address is not verified</strong><br>
+                            <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
+                            <button id="changeEmailButton" type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
+                            <button id="okChangeEmail" type="button" class="btn btn-success btn-sm mt-1 mb-1 hidden">Change</button>
+                            <button id="cancelChangeEmail" type="button" class="btn btn-light btn-sm mt-1 mb-1 hidden">Cancel</button>
+                            @else
+                            <strong class="font-italic mt-2 text-success">Verified</strong><br>
+                            <button id="changeEmailButton" type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
+                            <button id="okChangeEmail" type="button" class="btn btn-success btn-sm mt-1 mb-1 hidden">Change</button>
+                            <button id="cancelChangeEmail" type="button" class="btn btn-light btn-sm mt-1 mb-1 hidden">Cancel</button>
+                            @endif
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" id="email" value="{{ Auth::user()->email }}" class="form-control" readonly>
-                        @if(Auth::user()->email_verified_at == null)
-                        <strong class="font-italic mt-2 text-danger">Your email address is not verified</strong><br>
-                        <button type="button" class="btn btn-primary btn-sm mt-1 mb-1">Verify Now</button>
-                        <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
-                        @else
-                        <strong class="font-italic mt-2 text-success">Verified</strong><br>
-                        <button type="button" class="btn btn-success btn-sm mt-1 mb-1">Change Email Address</button>
-                        @endif
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="card">
@@ -164,6 +170,22 @@
 
         document.querySelector('#UpdatePasswordButton').addEventListener('click', function() {
             document.querySelector('#UpdatePassword').submit();
+        })
+
+        var changeEmailButton = document.querySelector('#changeEmailButton');
+        var okChangeEmail = document.querySelector('#okChangeEmail');
+        var cancelChangeEmail = document.querySelector('#cancelChangeEmail');
+
+        changeEmailButton.addEventListener('click', function() {
+            changeEmailButton.classList.add('hidden');
+            okChangeEmail.classList.remove('hidden');
+            cancelChangeEmail.classList.remove('hidden');
+        });
+
+        cancelChangeEmail.addEventListener('click', function() {
+            cancelChangeEmail.classList.add('hidden');
+            okChangeEmail.classList.add('hidden');
+            changeEmailButton.classList.remove('hidden');
         })
     });
 </script>
