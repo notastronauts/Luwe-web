@@ -49985,12 +49985,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var phone_number = document.getElementById('phone_number');
   var password = document.getElementById('password');
   var password_confirmation = document.getElementById('password_confirmation');
-  var restaurant_name = document.getElementById('restaurant_name');
-  var restaurant_state = document.getElementById('restaurant_state');
-  var city = document.getElementById('city');
-  var state = document.getElementById('state');
-  var zip_code = document.getElementById('zip_code');
-  var address = document.getElementById('address');
   var form = stepperFormEl.querySelector('.bs-stepper-content form');
   btnNextList.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -50013,7 +50007,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var stepperPan = stepperPanList[currentStep];
 
-    if (stepperPan.getAttribute('id') === 'test-form-1' && !first_name.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !last_name.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !email.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !phone_number.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !password.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !password_confirmation.value.length || stepperPan.getAttribute('id') === 'test-form-2' && !restaurant_name.value.length || stepperPan.getAttribute('id') === 'test-form-2' && !restaurant_state.value.length || stepperPan.getAttribute('id') === 'test-form-2' && !city.value.length || stepperPan.getAttribute('id') === 'test-form-2' && !state.value.length || stepperPan.getAttribute('id') === 'test-form-2' && !zip_code.value.length || stepperPan.getAttribute('id') === 'test-form-2' && !address.value.length) {
+    if (stepperPan.getAttribute('id') === 'test-form-1' && !first_name.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !last_name.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !email.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !phone_number.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !password.value.length || stepperPan.getAttribute('id') === 'test-form-1' && !password_confirmation.value.length) {
       event.preventDefault();
       form.classList.add('was-validated');
     }
