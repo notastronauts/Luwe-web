@@ -21,6 +21,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('profile', 'UserProfile');
     Route::put('profile/update-profile/{id}', 'UserProfile@updateProfile')->name('updateProfile');
     Route::put('profile/change-password/{id}', 'UserProfile@updatePassword')->name('updatePassword');
+    Route::resource('myrestaurants', 'RestaurantController');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
