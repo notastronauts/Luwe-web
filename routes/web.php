@@ -22,6 +22,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('profile/update-profile/{id}', 'UserProfile@updateProfile')->name('updateProfile');
     Route::put('profile/change-password/{id}', 'UserProfile@updatePassword')->name('updatePassword');
     Route::resource('myrestaurants', 'RestaurantController');
+    Route::post('provinces/getProvinces', 'StateAndProvinceController@ProvinceAutoComplete')->name('provinces.get');
+    Route::post('cities/getCities', 'CityController@getCity')->name('cities.get');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

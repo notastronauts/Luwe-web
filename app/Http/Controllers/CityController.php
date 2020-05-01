@@ -44,9 +44,9 @@ class CityController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show(Request $request)
     {
-        //
+        // 
     }
 
     /**
@@ -81,5 +81,24 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         //
+    }
+
+    public function getCity(Request $request)
+    {
+        $search = $request->search;
+        if ($search == '') {
+            $cities = City::orderby('city_name', 'asc')->select('city_id', 'city_name')->limit(5)->get();
+        } else {
+            $cities = City::orderby('city_name', 'asc')->select('city_id', 'city_name')->where('city_name', 'like', '%' . $search . '%')->limit(10)->get();
+        }
+
+        $response = array();
+
+        foreach ($cities as $city) {
+            $response[] = array("value" => $city->city_id, "label" => $city->city_name);
+        }
+
+        echo json_encode($response);
+        exit;
     }
 }

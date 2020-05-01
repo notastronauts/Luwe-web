@@ -13,7 +13,7 @@
     <div class="breadcrumbs-top float-md-right">
         <div class="breadcrumb-wrapper mr-1">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active">My Restaurants
                 </li>
@@ -31,7 +31,7 @@
                     <h2>Selamat datang di Luwe : Restaurant and Cafe Reservation App</h2>
                     <hr>
                     <p class="lead text-dark mb-2">Silahkan daftarkan Restoran atau Kafe anda untuk dapat melanjutkan ke tahap berikutnya.</p>
-                    <a type="button" class="btn btn-primary btn-lg py-1 text-white" role="button">
+                    <a href="{{ route('myrestaurants.create') }}" type="button" class="btn btn-primary btn-lg py-1 text-white" role="button">
                         <i class="la la-plus"></i> Daftarkan Restoran atau Kafe Baru
                     </a>
                 </div>

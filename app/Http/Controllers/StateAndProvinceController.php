@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\StateAndProvince;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StateAndProvinceController extends Controller
 {
@@ -81,5 +82,24 @@ class StateAndProvinceController extends Controller
     public function destroy(StateAndProvince $stateAndProvince)
     {
         //
+    }
+
+    public function ProvinceAutoComplete(Request $request)
+    {
+        $search = $request->search;
+        if ($search == '') {
+            $provinces = StateAndProvince::orderby('province_name', 'asc')->select('province_id', 'province_name')->limit(5)->get();
+        } else {
+            $provinces = StateAndProvince::orderby('province_name', 'asc')->select('province_id', 'province_name')->where('province_name', 'like', '%' . $search . '%')->limit(10)->get();
+        }
+
+        $response = array();
+
+        foreach ($provinces as $province) {
+            $response[] = array("value" => $province->province_id, "label" => $province->province_name);
+        }
+
+        echo json_encode($response);
+        exit;
     }
 }
