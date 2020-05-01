@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\SubDistrict;
 use Illuminate\Http\Request;
 
@@ -81,5 +82,13 @@ class SubDistrictController extends Controller
     public function destroy(SubDistrict $subDistrict)
     {
         //
+    }
+
+    public function getSubDistrict(Request $request)
+    {
+        $search = $request->search;
+        $sub_district = City::where('city_id', $search)->with('sub_district')->firstOrFail();
+
+        return response()->json($sub_district->sub_district);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\StateAndProvince;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -86,19 +87,17 @@ class CityController extends Controller
     public function getCity(Request $request)
     {
         $search = $request->search;
-        if ($search == '') {
-            $cities = City::orderby('city_name', 'asc')->select('city_id', 'city_name')->limit(5)->get();
-        } else {
-            $cities = City::orderby('city_name', 'asc')->select('city_id', 'city_name')->where('city_name', 'like', '%' . $search . '%')->limit(10)->get();
-        }
+        $cities = StateAndProvince::where('province_id', $search)->with('city')->firstOrFail();
 
-        $response = array();
+        return response()->json($cities->city);
 
-        foreach ($cities as $city) {
-            $response[] = array("value" => $city->city_id, "label" => $city->city_name);
-        }
+        // $response = array();
 
-        echo json_encode($response);
-        exit;
+        // foreach ($cities as $city) {
+        //     $response[] = array("value" => $city->city_id, "label" => $city->city_name);
+        // }
+
+        // echo json_encode($response);
+        // exit;
     }
 }

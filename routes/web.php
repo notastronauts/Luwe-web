@@ -24,6 +24,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('myrestaurants', 'RestaurantController');
     Route::post('provinces/getProvinces', 'StateAndProvinceController@ProvinceAutoComplete')->name('provinces.get');
     Route::post('cities/getCities', 'CityController@getCity')->name('cities.get');
+    Route::post('sub-district/getSubDistrict', 'SubDistrictController@getSubDistrict')->name('sub-district.get');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -46,14 +46,18 @@
                             <textarea name="address" class="form-control" id="AlamatRestoran" rows="3" placeholder="Alamat restoran"></textarea>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="Provinsi">{{ __('Provinsi') }}</label>
                                 <input type="text" name="city_id" id="Provinsi" class="form-control provinces-autocomplete">
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="Kabupaten">Kabupaten</label>
-                                <select name="kabupaten" id="Kabupaten" class="form-control">
-                                    <option selected></option>
+                            <div class="form-group col-md-3">
+                                <label for="kotaKabupaten">{{ __('Kabupaten/Kota') }}</label>
+                                <select name="kotakabupaten" id="kotaKabupaten" class="form-control">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="kecamatan">{{ __('Kecamatan') }}</label>
+                                <select name="kecamatan" id="kecamatan" class="form-control">
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
@@ -80,6 +84,7 @@
 @section('script')
 <script>
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    var id_provinsi;
     $(document).ready(function() {
         $(".provinces-autocomplete").autocomplete({
             source: function(request, response) {
@@ -99,10 +104,60 @@
             },
             select: function(event, ui) {
                 $('.provinces-autocomplete').val(ui.item.label);
+                id_provinsi = ui.item.value;
+                var find = id_provinsi;
+                if (find) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{ route('cities.get') }}",
+                        dataType: "json",
+                        data: {
+                            _token: CSRF_TOKEN,
+                            search: find
+                        },
+                        success: function(response) {
+                            $('#kotaKabupaten').empty();
+                            $("#kotaKabupaten").append('<option>-- Pilih Kota--</option>');
+                            if (response) {
+                                $.each(response, function(key, value) {
+                                    $('#kotaKabupaten').append($("<option/>", {
+                                        value: value.city_id,
+                                        text: value.city_name
+                                    }));
+                                });
+                            }
+                        }
+                    });
+                }
                 return false;
             }
         });
-
+        $("#kotaKabupaten").change(function() {
+            var city_id = $(this).val();
+            if (city_id) {
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('sub-district.get') }}",
+                    dataType: "json",
+                    data: {
+                        _token: CSRF_TOKEN,
+                        search: city_id
+                    },
+                    success: function(response) {
+                        $('#kecamatan').empty();
+                        $("#kecamatan").append('<option>-- Pilih Kecamatan--</option>');
+                        if (response) {
+                            $.each(response, function(key, value) {
+                                $('#kecamatan').append($("<option/>", {
+                                    value: value.sub_district_id,
+                                    text: value.sub_district_name
+                                }));
+                            });
+                        }
+                    }
+                });
+            }
+        });
     });
 </script>
 @endsection
