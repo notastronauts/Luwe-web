@@ -26,6 +26,6 @@ class SubDistrict extends Model
 
     public function postal_code()
     {
-        return $this->belongsToMany(PostalCode::class, 'sub_district_postal_codes', 'sub_district_id', 'postal_id');
+        return $this->belongsToMany(PostalCode::class, 'sub_district_postal_codes', 'sub_district_id', 'postal_id', 'sub_district_id', 'id');
     }
 }

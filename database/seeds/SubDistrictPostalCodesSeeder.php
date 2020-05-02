@@ -15,6 +15,10 @@ class SubDistrictPostalCodesSeeder extends Seeder
      */
     public function run()
     {
-        // 
+        $sub_districts = SubDistrict::get();
+        foreach ($sub_districts as $sub_district) {
+            $postal_codes = PostalCode::select()->where('sub_district', 'like', '%' .$sub_district->sub_district_name. '%')->get();
+            $sub_district->postal_code()->attach($postal_codes);
+        }
     }
 }
