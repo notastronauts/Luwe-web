@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,36 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'restaurant_name' => 'required',
+            'restaurant_description' => 'required',
+            'address' => 'required',
+            'province_id' => 'required',
+            'city_id' => 'required',
+            'sub_district_id' => 'required',
+            'postal_id' => 'required'
+        ]);
+        $restaurant = Restaurant::create([
+            'restaurant_name' => $validateData['restaurant_name'],
+            'restaurant_description' => $validateData['restaurant_description'],
+        ]);
+
+        $address = new Address;
+        $address->address = $validateData['address'];
+        $address->sub_district_id = $validateData['sub_district_id'];
+        $address->postal_id = $validateData['postal_id'];
+
+        $address->restaurant()->associate($restaurant);
+        $address->save();
+
+        // $address = Address::create([
+        //     'address' => $validateData['address'],
+        //     'sub_district_id' => $validateData['sub_district_id'],
+        //     'postal_id' => $validateData['postal_id']
+        // ])->restaurant()->assign($restaurant);
+
+
+        return redirect(route('myrestaurants.index'));
     }
 
     /**

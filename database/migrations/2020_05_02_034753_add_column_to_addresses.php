@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeOnDeleteActionInSubDistrictPostalCodes extends Migration
+class AddColumnToAddresses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ChangeOnDeleteActionInSubDistrictPostalCodes extends Migration
      */
     public function up()
     {
-        Schema::table('sub_district_posttal_codes', function (Blueprint $table) {
-            //
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->bigInteger('postal_id');
+            $table->bigInteger('sub_district_id');
         });
     }
 
@@ -25,7 +26,7 @@ class ChangeOnDeleteActionInSubDistrictPostalCodes extends Migration
      */
     public function down()
     {
-        Schema::table('sub_district_posttal_codes', function (Blueprint $table) {
+        Schema::table('addresses', function (Blueprint $table) {
             //
         });
     }

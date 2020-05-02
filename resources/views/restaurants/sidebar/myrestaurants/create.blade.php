@@ -32,7 +32,8 @@
                 <div class="card-body">
                     <h2>Tambah Restoran atau Kafe baru</h2>
                     <hr class="my-2">
-                    <form action="#">
+                    <form action="{{ route('myrestaurants.store') }}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label for="NamaRestoran">{{ __('Nama Restoran') }}</label>
                             <input name="restaurant_name" type="text" class="form-control" id="NamaRestoran" placeholder="Nama restoran" value="{{ old('restaurant_name') }}">
@@ -48,32 +49,24 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="Provinsi">{{ __('Provinsi') }}</label>
-                                <input type="text" name="city_id" id="Provinsi" class="form-control provinces-autocomplete">
+                                <input type="text" name="province_id" id="Provinsi" class="form-control provinces-autocomplete">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="kotaKabupaten">{{ __('Kabupaten/Kota') }}</label>
-                                <select name="kotakabupaten" id="kotaKabupaten" class="form-control">
+                                <select name="city_id" id="kotaKabupaten" class="form-control">
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="kecamatan">{{ __('Kecamatan') }}</label>
-                                <select name="kecamatan" id="kecamatan" class="form-control">
+                                <select name="sub_district_id" id="kecamatan" class="form-control">
                                 </select>
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
+                                <label for="kode_pos">{{ __('Desa - Kode Pos') }}</label>
+                                <select name="postal_id" class="form-control" id="kode_pos"></select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Check me out
-                                </label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                 </div>
             </div>
@@ -103,7 +96,7 @@
                 });
             },
             select: function(event, ui) {
-                $('.provinces-autocomplete').val(ui.item.label);
+                $('.provinces-autocomplete').val(ui.item.value);
                 id_provinsi = ui.item.value;
                 var find = id_provinsi;
                 if (find) {
@@ -151,6 +144,32 @@
                                 $('#kecamatan').append($("<option/>", {
                                     value: value.sub_district_id,
                                     text: value.sub_district_name
+                                }));
+                            });
+                        }
+                    }
+                });
+            }
+        });
+        $("#kecamatan").change(function() {
+            var sub_district_id = $(this).val();
+            if (sub_district_id) {
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('postal-code.get') }}",
+                    dataType: "json",
+                    data: {
+                        _token: CSRF_TOKEN,
+                        search: sub_district_id
+                    },
+                    success: function(response) {
+                        $('#kode_pos').empty();
+                        $("#kode_pos").append('<option>-- Pilih Desa - Kode Pos--</option>');
+                        if (response) {
+                            $.each(response, function(key, value) {
+                                $('#kode_pos').append($("<option/>", {
+                                    value: value.id,
+                                    text: value.urban + " - " + value.postal_code
                                 }));
                             });
                         }

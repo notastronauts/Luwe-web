@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PostalCode;
+use App\SubDistrict;
 use Illuminate\Http\Request;
 
 class PostalCodeController extends Controller
@@ -81,5 +82,13 @@ class PostalCodeController extends Controller
     public function destroy(PostalCode $postalCode)
     {
         //
+    }
+
+    public function getPostalCode(Request $request)
+    {
+        $search = $request->search;
+        $postal = SubDistrict::where('sub_district_id', $search)->with('postal_code')->firstOrFail();
+
+        return response()->json($postal->postal_code);
     }
 }
