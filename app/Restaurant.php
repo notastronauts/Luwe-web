@@ -14,4 +14,14 @@ class Restaurant extends Model
     {
         return $this->hasOne(Address::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany(ImageModel::class, 'restaurant_images', 'restaurant_id', 'image_id', 'id', 'id');
+    }
 }

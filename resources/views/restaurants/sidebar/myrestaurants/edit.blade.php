@@ -17,7 +17,7 @@
                 </li>
                 <li class="breadcrumb-item"><a href="{{ route('myrestaurants.index') }}">My Restaurants</a>
                 </li>
-                <li class="breadcrumb-item active">Create
+                <li class="breadcrumb-item active">{{ $restaurant->restaurant_name }}
                 </li>
             </ol>
         </div>
@@ -30,13 +30,14 @@
         <div class="col-12 align-center">
             <div class="card">
                 <div class="card-body">
-                    <h2>Tambah Restoran atau Kafe baru</h2>
+                    <h2>Edit Restoran atau Kafe</h2>
                     <hr class="my-2">
-                    <form action="{{ route('myrestaurants.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('myrestaurants.update', $restaurant->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="NamaRestoran">{{ __('Nama Restoran') }}</label>
-                            <input name="restaurant_name" type="text" class="@error('restaurant_name') is-invalid @enderror form-control" id="NamaRestoran" placeholder="Nama restoran" value="{{ old('restaurant_name') }}">
+                            <input name="restaurant_name" type="text" class="@error('restaurant_name') is-invalid @enderror form-control" id="NamaRestoran" placeholder="Nama restoran" value="{{ $restaurant->restaurant_name }}">
                             @error('restaurant_name')
                             <span class="invalid-feedback text-left" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -45,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="DeskripsiRestorant">{{ __('Deskripsi') }}</label>
-                            <textarea name="restaurant_description" class="@error('restaurant_description') is-invalid @enderror form-control" id="DeskripsiRestoran" rows="3" placeholder="Deskripsi restoran"></textarea>
+                            <textarea name="restaurant_description" class="@error('restaurant_description') is-invalid @enderror form-control" id="DeskripsiRestoran" rows="3" placeholder="Deskripsi restoran">{{ $restaurant->restaurant_description }}</textarea>
                             @error('restaurant_description')
                             <span class="invalid-feedback text-left" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -54,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <label for="AlamatRestoran">{{ __('Alamat') }}</label>
-                            <textarea name="address" class="@error('address') is-invalid @enderror form-control" id="AlamatRestoran" rows="3" placeholder="Alamat restoran"></textarea>
+                            <textarea name="address" class="@error('address') is-invalid @enderror form-control" id="AlamatRestoran" rows="3" placeholder="Alamat restoran">{{ $restaurant->address->address }}</textarea>
                             @error('address')
                             <span class="invalid-feedback text-left" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -64,7 +65,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="Provinsi">{{ __('Provinsi') }}</label>
-                                <input type="text" name="province_id" id="Provinsi" class="@error('province_id') is-invalid @enderror form-control provinces-autocomplete">
+                                <input type="text" name="province_id" id="Provinsi" class="@error('province_id') is-invalid @enderror form-control provinces-autocomplete" value="{{ $restaurant->address->sub_district->city->province->province_name }}">
                                 @error('province_id')
                                 <span class="invalid-feedback text-left" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -74,6 +75,7 @@
                             <div class="form-group col-md-3">
                                 <label for="kotaKabupaten">{{ __('Kabupaten/Kota') }}</label>
                                 <select name="city_id" id="kotaKabupaten" class="@error('city_id') is-invalid @enderror form-control">
+                                    <option value="{{ $restaurant->address->sub_district->city->city_id }}">{{ $restaurant->address->sub_district->city->city_name }}</option>
                                 </select>
                                 @error('city_id')
                                 <span class="invalid-feedback text-left" role="alert">
@@ -84,6 +86,7 @@
                             <div class="form-group col-md-3">
                                 <label for="kecamatan">{{ __('Kecamatan') }}</label>
                                 <select name="sub_district_id" id="kecamatan" class="@error('sub_district_id') is-invalid @enderror form-control">
+                                    <option value="{{ $restaurant->address->sub_district->sub_district_id }}">{{ $restaurant->address->sub_district->sub_district_name }}</option>
                                 </select>
                                 @error('sub_district_id')
                                 <span class="invalid-feedback text-left" role="alert">
@@ -93,7 +96,9 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="kode_pos">{{ __('Desa - Kode Pos') }}</label>
-                                <select name="postal_id" class="@error('postal_id') is-invalid @enderror form-control" id="kode_pos"></select>
+                                <select name="postal_id" class="@error('postal_id') is-invalid @enderror form-control" id="kode_pos">
+                                    <option value="{{ $restaurant->address->postal_code->id }}">{{ $restaurant->address->postal_code->urban. '-' .$restaurant->address->postal_code->postal_code }}</option>
+                                </select>
                                 @error('postal_id')
                                 <span class="invalid-feedback text-left" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -111,7 +116,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Tambah</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>

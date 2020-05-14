@@ -17,4 +17,8 @@ class PostalCode extends Model
         return $this->belongsToMany(SubDistrict::class, 'sub_district_postal_codes', 'postal_id', 'sub_district_id', 'id', 'sub_district_id');
     }
 
+    public function address()
+    {
+        $this->hasOne(Address::class);
+    }
 }

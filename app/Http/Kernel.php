@@ -45,7 +45,8 @@ class Kernel extends HttpKernel
             'web',
             'auth',
             'role:admin'
-        ]
+        ],
+        
     ];
 
     /**

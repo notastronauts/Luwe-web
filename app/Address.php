@@ -12,4 +12,14 @@ class Address extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+
+    public function postal_code()
+    {
+        return $this->belongsTo(PostalCode::class, 'postal_id', 'id');
+    }
+
+    public function sub_district()
+    {
+        return $this->belongsTo(SubDistrict::class, 'sub_district_id', 'sub_district_id');
+    }
 }
