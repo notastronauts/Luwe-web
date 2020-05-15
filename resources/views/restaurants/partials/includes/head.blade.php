@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('restaurant/admin/css/core/colors/palette-gradient.css') }}">
     <link rel="stylesheet" href="{{ asset('restaurant/admin/vendors/jquery-ui/jquery-ui.theme.min.css') }}">
     <!-- END Page Level CSS-->
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('restaurant/admin/vendors/DataTables/datatables.min.css') }}">
 </head>
 
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-chartbg" data-col="2-columns">

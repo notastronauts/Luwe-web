@@ -35,5 +35,5 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/scss/core/mixins/hex2rgb.scss', 'public/restaurant/admin/css/core/mixins')
    .sass('resources/scss/core/mixins/main-menu-mixin.scss', 'public/restaurant/admin/css/core/mixins')
    .sass('resources/scss/core/mixins/transitions.scss', 'public/restaurant/admin/css/core/mixins')
-   .copy('resources/vendors/jquery-ui', 'public/restaurant/admin/vendors/jquery-ui');
-
+   .copy('resources/vendors/jquery-ui', 'public/restaurant/admin/vendors/jquery-ui')
+   .copy('resources/vendors/DataTables', 'public/restaurant/admin/vendors/DataTables');

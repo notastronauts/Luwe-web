@@ -24,4 +24,9 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(ImageModel::class, 'restaurant_images', 'restaurant_id', 'image_id', 'id', 'id');
     }
+
+    public function meja()
+    {
+        return $this->hasMany(Meja::class, 'restaurant_id');
+    }
 }

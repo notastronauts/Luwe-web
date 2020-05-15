@@ -40,6 +40,13 @@
         </div>
     </div>
     @else
+    <div class="row mb-1">
+        <div class="col-6">
+            <a href="{{ route('myrestaurants.create') }}" type="button" class="btn btn-primary btn-lg py-1 text-white" role="button">
+                <i class="la la-plus"></i> Daftarkan Restoran atau Kafe Baru
+            </a>
+        </div>
+    </div>
     <div class="row">
         @foreach($restaurants as $restaurant)
         <div class="col-lg-4 col-md-12">
@@ -76,11 +83,6 @@
             </div>
         </div>
         @endforeach
-        <div class="col-lg-4 col-md-12">
-            <div class="card">
-                <i class="la la-plus"></i>
-            </div>
-        </div>
     </div>
     @endif
 </section>

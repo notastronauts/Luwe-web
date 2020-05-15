@@ -22,6 +22,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('profile/update-profile/{id}', 'UserProfile@updateProfile')->name('updateProfile');
     Route::put('profile/change-password/{id}', 'UserProfile@updatePassword')->name('updatePassword');
     Route::resource('myrestaurants', 'RestaurantController');
+    Route::get('table-manager/{id}', 'MejaController@index')->name('table-manager.index');
+    Route::get('table-manager/{id}/create', 'MejaController@create')->name('table-manager.create');
+    Route::post('table-manager', 'MejaController@store')->name('table-manager.store');
     Route::post('provinces/getProvinces', 'StateAndProvinceController@ProvinceAutoComplete')->name('provinces.get');
     Route::post('cities/getCities', 'CityController@getCity')->name('cities.get');
     Route::post('sub-district/getSubDistrict', 'SubDistrictController@getSubDistrict')->name('sub-district.get');
